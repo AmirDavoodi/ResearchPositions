@@ -1,0 +1,88 @@
+\begin{tikzpicture}[
+        node distance=1.5cm,
+        stage/.style={rectangle, rounded corners, minimum width=3cm, minimum height=1.5cm, text centered, draw=black, fill=blue!10},
+        process/.style={rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=green!10},
+        decision/.style={diamond, minimum width=0.5cm, minimum height=1cm, text centered, draw=black, fill=cyan!40},
+        arrow/.style={thick,->,>=stealth},
+        container/.style={rectangle, rounded corners, dashed, draw=black, inner sep=10pt, minimum width=6cm, minimum height=4cm},
+        outer_container/.style={rectangle, rounded corners, dashed, draw=black, inner sep=10pt, minimum width=8cm, minimum height=6cm},
+        innter_container/.style={rectangle, rounded corners, dashed, draw=black, inner sep=10pt, minimum width=5cm, minimum height=5.5cm}
+    ]
+
+    % Nodes
+    \node (initial_domain) [stage, fill=teal!40] {Initial Domain};
+    \node (make_initial_entity) [process, below=0.5cm of initial_domain] {Make Initial Entity};
+    \node (current_domain_entity) [stage, below=0.5cm of make_initial_entity] {Current Domain Entity};
+    \node (reconstruction_error) [decision, below=5cm of current_domain_entity, align=center] {Reconstruction \\ Error};
+    \node (entity_resolution) [process, above=1cm of reconstruction_error] {Entity Resolution};
+    \node (reach_max_depth) [decision, right=3cm of entity_resolution, align=center] {Reach \\ \textit{\textbf{max\_depth}}};
+    \node (final_kg) [stage, right=of reach_max_depth, fill=orange!50, align=center] {Final \\ Knowledge Graph};
+    \node (select_top_k) [process, above=1cm of reach_max_depth, align=center] {Select Top \textit{\textbf{K}} \\ \textbf{Sub-Domains}};
+
+    % Inner Nodes for Primal Model (positioned relative to primal)
+    \node (entity_extraction) [process, below left=0.5cm and 3.5cm of reconstruction_error] {Entity Extraction};
+    \node (build_similarity) [process, below=of entity_extraction] {Build Similarity Matrix};
+    \node (create_graph) [process, below=0.5cm of build_similarity] {Create Similarity Graph};
+    \node (community_detection) [process, below=0.5cm of create_graph] {Community Detection};
+
+    \node (relation_extraction) [process, below=1cm of community_detection] {Relation Extraction};
+
+    % Primal Container (fits primal and inner nodes)
+    \begin{scope}[on background layer]
+        \node (primal_container) [outer_container, fit=(entity_extraction) (build_similarity) (create_graph) (community_detection) (relation_extraction), fill=blue!20, label={[rotate=90, anchor=south, yshift=0.5cm]right:Primal Model}] {};
+    \end{scope}
+
+    % Entity Clustering Container (fits entity clustering and inner nodes)
+    \begin{scope}[on background layer]
+        \node (entity_clustering_container) [innter_container, yshift=12pt, fit=(build_similarity) (create_graph) (community_detection), fill=yellow!20, label={[anchor=north, yshift=-5pt]above:Entity Clustering}] {};
+    \end{scope}
+
+    % Other Nodes
+    \node (kg) [stage, below right=0.5cm and 2.8cm of relation_extraction, fill=orange!20] {Knowledge Graph};
+
+    % Inner Nodes for Dual Model (positioned relative to dual)
+    \node (reconstructed_kg) [stage, below right=0.2cm and 3.5cm of reconstruction_error, fill=orange!20, align=center] {Reconstructed \\ Knowledge Graph};
+    \node (triplet_extraction) [process, below=of reconstructed_kg] {KG Triplet Extraction};
+    \node (hierarchical_taxonomy) [process, below=0.5cm of triplet_extraction] {Hierarchical Taxonomy};
+    \node (text_generation) [process, below=0.5cm of hierarchical_taxonomy] {Text Generation};
+
+
+    % Dual Container (fits dual and inner nodes)
+    \begin{scope}[on background layer]
+        \node (dual_container) [container, fit=(text_generation) (hierarchical_taxonomy) (triplet_extraction), fill=red!20, label={[rotate=90, anchor=south, yshift=0.5cm]right:Dual Model}] {};
+    \end{scope}
+
+    % Arrows
+    \draw [arrow] (initial_domain) -- (make_initial_entity);
+    \draw [arrow] (make_initial_entity) -- (current_domain_entity);
+    \draw [arrow] (current_domain_entity) -| (entity_extraction);
+    \draw [arrow] (entity_extraction) -- (entity_clustering_container);
+    \draw [arrow] (build_similarity) -- (create_graph);
+    \draw [arrow] (create_graph) -- (community_detection);
+    \draw [arrow] (entity_clustering_container) -- (relation_extraction);
+    \draw [arrow] (relation_extraction) |- (kg.west);
+    \draw [arrow] (kg) -| (text_generation.south);
+    \draw [arrow] (text_generation) -- (hierarchical_taxonomy);
+    \draw [arrow] (hierarchical_taxonomy) -- (triplet_extraction);
+    \draw [arrow] (triplet_extraction) -- (reconstructed_kg);
+    \draw [arrow] (reconstructed_kg) |- (reconstruction_error);
+    \draw [arrow] (reconstruction_error) -- node[right]{Low} (entity_resolution);
+    \draw [arrow] (entity_resolution) -- (reach_max_depth);
+    \draw [arrow] (reach_max_depth.north) -- node[right] {No} (select_top_k.south);
+    \draw [line width=0.2cm,->,>=stealth] (select_top_k.north) -- ++(0,0.5) |- node[near end, above, align=center] {Top \textbf{K} \\ Sub-Domains} (current_domain_entity.east);
+    \draw [arrow] (kg) -- (reconstruction_error);
+    \draw [arrow] (reach_max_depth.east) -- (final_kg);
+    \draw [arrow] (reconstruction_error.west) -| node[near start, above] {High} ($(entity_extraction.north)+(1,0)$;);
+
+    % Labels
+    \node at ($(primal_container.west)$) [rotate=90, anchor=north, yshift=-0.2cm] {\textbf{Top-Down Construction}};
+    \node at ($(dual_container.west)$) [rotate=90, anchor=north, yshift=-0.2cm] {\textbf{Bottom-Up Validation}};
+    \node at ($(current bounding box.north east)+(-3,-2)$) [draw, fill=white, align=left] {
+        % \scriptsize
+        \textcolor{blue}{Primal}: Entity/relation extraction\\
+        \textcolor{purple}{Dual}: Text/KG reconstruction\\
+        \textcolor{orange}{KG}: Hierarchical Ontology\\
+        \textcolor{green}{Process}: Steps\\
+        \textcolor{yellow}{Entity Clustering}: Similarity/Communities
+    };
+\end{tikzpicture}

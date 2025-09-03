@@ -1,0 +1,47 @@
+{
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "Global XeLaTeX Atomic Build",
+            "tools": [
+                "global-xelatex-atomic"
+            ]
+        }
+    ],
+    "latex-workshop.latex.tools": [
+        {
+            "name": "global-xelatex-atomic",
+            "command": "/home/ehsan/Applications/cursor/compile-xelatex.sh",
+            "args": [
+                "%DOCFILE%"
+            ],
+            "env": {}
+        }
+    ],
+    "latex-workshop.latex.recipe.default": "Global XeLaTeX Atomic Build",
+    "latex-workshop.latex.clean.fileTypes": [
+        "*.aux",
+        "*.bbl",
+        "*.blg",
+        "*.idx",
+        "*.ind",
+        "*.lof",
+        "*.lot",
+        "*.out",
+        "*.toc",
+        "*.acn",
+        "*.acr",
+        "*.alg",
+        "*.glg",
+        "*.glo",
+        "*.gls",
+        "*.ist",
+        "*.fls",
+        "*.log",
+        "*.fdb_latexmk",
+        "*.synctex.gz"
+    ],
+    "latex-workshop.latex.autoClean.run": "never",
+    "latex-workshop.latex.autoBuild.run": "onSave",
+    "latex-workshop.latex.build.forceRecipeUsage": true,
+    "latex-workshop.view.pdf.viewer": "tab"
+} 

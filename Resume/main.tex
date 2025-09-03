@@ -1,0 +1,264 @@
+\documentclass[9pt]{article}
+\usepackage{fullpage}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[usenames]{color}
+\usepackage{multicol}
+\usepackage{lipsum}%
+\usepackage{enumitem}
+\setlist{leftmargin=3.5mm}
+
+\usepackage{changepage}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{epstopdf}
+\usepackage{color}
+\usepackage{amssymb}
+%\usepackage{amsmath}
+%\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{lastpage}
+
+\makeatletter
+\renewcommand{\@evenfoot}{\hfil  \thepage{} of \pageref*{LastPage}\hfil}
+\renewcommand{\@oddfoot}{\@evenfoot}
+\makeatother
+%\usepackage{ragged2e}
+
+\leftmargin=0.25in
+\oddsidemargin=0.25in
+\textwidth=6.0in
+\topmargin=-0.25in
+\textheight=9.25in
+
+\raggedright
+
+\pagenumbering{arabic}
+
+
+\def\bull{\vrule height 0.8ex width .7ex depth -.1ex }
+% DEFINITIONS FOR RESUME
+
+\newenvironment{changemargin}[2]{%
+  \begin{list}{}{%
+    \setlength{\topsep}{0pt}%
+    \setlength{\leftmargin}{#1}%
+    \setlength{\rightmargin}{#2}%
+    \setlength{\listparindent}{\parindent}%
+    \setlength{\itemindent}{\parindent}%
+    \setlength{\parsep}{\parskip}%
+  }%
+  \item[]}{\end{list}
+}
+
+\newcommand{\lineover}{
+	\begin{changemargin}{-0.05in}{-0.05in}
+		\vspace*{-8pt}
+		\hrulefill \\
+		\vspace*{-2pt}
+	\end{changemargin}
+}
+
+\newcommand{\header}[1]{
+	\begin{changemargin}{-0.5in}{-0.5in}
+		\scshape{#1}\\
+  	\lineover
+	\end{changemargin}
+}
+
+\newcommand{\contact}[4]{
+	\begin{changemargin}{-0.5in}{-0.5in}
+		%\begin{center}
+			{\Large \scshape {#1}}\\ \smallskip
+			{#2}\\ \smallskip
+			{#3}\\ \smallskip
+			{#4}\smallskip
+		%\end{center}
+	\end{changemargin}
+}
+
+\newenvironment{body} {
+	\vspace*{-16pt}
+	\begin{changemargin}{-0.25in}{-0.5in}
+  }	
+	{\end{changemargin}
+}	
+
+\newcommand{\school}[4]{
+	\textbf{#1} \hfill \emph{#2\\}
+	#3\\
+	#4\\
+}
+
+% END RESUME DEFINITIONS
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Name
+\contact{Amirehsan Davoodi}
+{Nationality: \hspace{0.5cm} Iranian \hfill E-mail: amirehsan.davoodi@gmail.com}
+{Date of Birth: \hspace{0.15cm} 08.12.1990 \hfill Telephone: (+98) 9156126388}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Education
+%% \header{Objective}
+%% \begin{body}
+%%	\vspace{14pt}
+%% Seeking graduate student position with emphasis on Machine Learning and Optimization.
+%% \end{body}
+%\smallskip
+
+\vspace{10pt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Education
+
+\header{Education}
+\begin{body}
+	\vspace{14pt}
+	\textbf{PhD Candidate in Artificial Intelligence  \hfill \emph{09.2022-Present}} \\
+	\emph{Amirkabir University of Technology, Tehran, Iran}\\
+	\hspace{0.5cm}\textbf{\emph{AI Researcher, AGML Center, Center for Advances in Graph Machine Learning}}\\
+\end{body}
+\begin{body}
+	\vspace{14pt}
+	\textbf{Master of Science in Artificial Intelligence  \hfill \emph{09.2017-09.2020}} \\
+	\emph{Universita della Svizzera Italiana (USI), Lugano, Switzerland}\\
+	\hspace{0.5cm}\textbf{Thesis: \emph{"Goal-directed graph generation for anomaly detection on time series"} GPA 8.04/10}\\
+	\begin{adjustwidth}{1cm}{0pt}
+		{In this Master’s thesis, we examine the potential advantage of representing a time-series as a sequence of graphs, with the end goal being to be able to develop a methodology for anomaly detection on univariate time-series data. As a case study, we considered the problem of arrhythmia detection on an ECG signal.}
+	\end{adjustwidth}
+\end{body}
+\vspace{5pt}
+\begin{body}
+	\vspace{14pt}
+	\textbf{Bachelor of Science in Computer Engineering  \hfill \emph{09.2009-02.2014}} \\
+	\emph{Shahrood University of Technology, Shahrood, Iran}\\
+	\hspace{0.5cm} \textbf{Thesis: \emph{"A free posting advertisement platform for various mobile platforms"} GPA 17.38/20}\\
+	\begin{adjustwidth}{1cm}{0pt}
+		{Design and implementation of a free posting advertisement platform on various mobile platforms (IOS, Android, Windows Phone, and Symbian) based on four different operating systems using four different programming languages.}
+	\end{adjustwidth}
+\end{body}
+\vspace{5pt}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Experience
+
+\header{Experience}
+\begin{body}
+	\vspace{18pt}
+
+	\textbf{Rayan Traineeship} \hfill \emph{ 10.2023-Present}
+
+	\href{https://tali.ai/}{\emph{National Elite Foundation, Tehran, Iran}} \\
+
+	Rayan Traineeship program is a one year project which selected top 4\% national elites are selected to be trained for the managerial rolls and pave the path for the digital transformation of the ICT, Information and Communication Technology, ecosystems of Iran.\\
+	As a selected participant, I working under the mentorship of top private companies CEO and ICT deputy ministers. Learned directly from more than 30 high-ranking officials, previous ministers, deputy ministers and CEO of top private companies.\\
+
+	\vspace{5pt}
+
+	\textbf{Full-stack developer} \hfill \emph{ 07.2022-07.2023}
+
+	\href{https://tali.ai/}{\emph{Tali AI, Toronto, Ontario, Canada}} \\
+
+	Tali is a virtual assistant that offers free AI dictation and scribe, and unlimited drug monograph lookup on top all web-based EHR systems.\\
+	We are using the following technologies in our team FastAPI, Node.js, Next.js, Vertex AI, MongoDB, PostgreSQL, TypeORM, SQLAlchemy, React.js, Electron.js, Metabase and Retool.\\
+
+	\vspace{5pt}
+
+	\textbf{CTO} \hfill \emph{ 01.2022-06.2022}
+
+	\href{https://adanbaba.com/wap.html}{\emph{AdanBaba, Tehran, Iran}} \\
+
+	AdanBaba is an international e-commerce and retailer company headquartered in Guangdong, China.\\
+	I am leading the software development team of seven people. We are using the following technologies in our team Node.js, NestJs,
+	GraphQL, MongoDB, PostgreSQL, TypeORM, Laravel 5, Vue.js, Vant 3 and React 17.\\
+
+	\vspace{5pt}
+
+	\textbf{Backend Developer} \hfill \emph{ 03.2021-01.2022}
+
+	\href{https://limoome.com/en/}{\emph{Limoome, Tehran, Iran}} \\
+
+	An online diet and health planner for losing or gaining weight.
+	I am working with the following technologies. Node.js, NestJs, GraphQL, MongoDB, PostgreSQL, TypeORM.\\
+	Having a data science background, I am also the tech lead for the data science team in the company.\\
+
+	\vspace{5pt}
+
+	\textbf{Co-Founder and CTO} \hfill \emph{ 06.2018-09.2020}
+
+	\href{https://www.startupticker.ch/en/news/july-2018/ubihealth-launches-solution-for-remote-patient-monitoring}{\emph{UbiHealth, Lugano, Switzerland}} \\
+
+	A startup based on intelligent wearable technology to enable continuous patient monitoring for a more efficient, effective and sustainable healthcare outcome.\\
+
+	\vspace{5pt}
+
+	\textbf{Full-stack Web Developer} \hfill \emph{12.2016-09.2017} \\
+	\href{http://sepidvas.com/}{\emph{Vasl Andishan Sepid, Tehran, Iran}}\\
+	A value-added service and aggregator framework provider for the telecommunication company of Iran which providing services such as online media streaming, cloud storage, and voice over IP.\\
+
+	\begin{itemize}
+		\item \emph{Real-time and high-volume transactional system:}
+		      Design and development of multiple web services for high volume transaction system for telecommunication company of Iran on paying with phone bill.
+		\item \emph{Filmanet (A media streaming platform):} Design and implementation of web services for \href{http://filmanet.ir/}{\emph{Filmanet}}, an Iranian streaming media provider on multiple platforms set-top box, android application and website.
+		\item \emph{UPFI (A free cloud storage platform)} Design and development of \href{http://upfi.ir/}{\emph{UPFI free cloud storage}}, a file hosting and cloud storage service for the telecommunication company of Iran.
+	\end{itemize}
+
+	\vspace{5pt}
+
+	\textbf{Full-stack Web Developer} \hfill \emph{12.2015-12.2016} \\
+	\href{http://sitedar.com/en/}{\emph{Darkoob Web Agency, Tehran, Iran}}\\
+	A full-stack web agency with more than 50 employees.\\
+
+	\begin{itemize}
+		\item \emph{RentHomeTehran.com:} A real-estate agency website for free posting furnished accommodation in Tehran, Iran.
+		\item \emph{OffUniverse.com:} An e-commerce marketplace connecting subscribers with local merchants by offering best deals in major cities of Thailand.
+		\item \emph{OstadYab.net:} An online tutoring web platform.
+	\end{itemize}
+
+	\vspace{5pt}
+
+	\textbf{Full-stack Web Developer Internship} \hfill \emph{09.2015-12.2015} \\
+	\href{https://dpm.co.com/}{\emph{DPM Full-Stack Web Agency, Tehran, Iran}}\\
+	An award-winning Full-Stack Web Agency specializing in front-end, back-end development and digital services.
+	\begin{itemize}
+		\item Back-end web development with Larevel 5 PHP framework
+	\end{itemize}
+	\vspace{5pt}
+
+	\textbf{Software Tester and Back-end Web Developer } \hfill \emph{02.2014-09.2015} \\
+	\href{http://iiscenter.ir/en/}{\emph{Intelligent Information Solutions Center, Sharif University of Technology, Tehran, Iran}}\\
+	A knowledge centric center at Sharif university of technology for providing intelligent platform for industrial partners.
+	\begin{itemize}
+		\item \emph{CPMIS:} Automation testing of "{Comprehensive Project Management Information System (A web-based enterprise class project management and information system created for use in large scale enterprises)}" using the Selenium testing tool.
+
+		\item \emph{CSI.ORG.IR:} Web developer for the official website of Computer Society of Iran.
+	\end{itemize}
+
+	\vspace{5pt}
+
+	\textbf{Teaching Assistant} \hfill \emph{09.2013-06.2015} \\
+	\href{http://www.shahroodut.ac.ir/fa/?lng=en}{\emph{Shahrood University of Technology, Shahrood, Iran}} \\
+	\begin{itemize}
+		\item \emph{Software Engineering II:} Designing homework problems and grading of assignments.
+
+		\item \emph{Computer Networks I:} Designing homework problems and grading of assignments.
+
+		\item \emph{Fundamentals of Programming with C:} Lecturing, designing homework problems, and grading of assignments.
+	\end{itemize}
+
+\end{body}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Publications
+
+\header{Publications}
+\begin{body}
+	\vspace{14pt}
+	\textbf{ASD-GraphNet: A novel graph learning approach for Autism Spectrum Disorder diagnosis using fMRI data} \\
+	Mina Zeraati and Amirehsan Davoodi. \emph{Computers in Biology and Medicine}, 196:110723, 2025.\\
+	\href{https://doi.org/10.1016/j.compbiomed.2025.110723}{doi:10.1016/j.compbiomed.2025.110723} \hfill \href{https://www.sciencedirect.com/science/article/pii/S0010482525010741}{Link} \\
+\end{body}
+\end{document}
