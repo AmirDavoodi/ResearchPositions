@@ -1,0 +1,40 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{parskip}
+\usepackage{hyperref}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{setspace}
+\usepackage{enumitem}
+
+\hypersetup{colorlinks=true,linkcolor=black,urlcolor=blue}
+
+\begin{document}
+
+\noindent\textbf{\Large Research Interests --- Multimodal VLMs + Knowledge Graphs for Crisis Response}
+
+\vspace{0.5em}
+
+I am interested in building trustworthy multimodal foundation models (vision--language--action) that integrate structured knowledge for crisis and disaster management. My current research focuses on:
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Agentic AI for Knowledge Graph Construction (KGC):} dual-learning validation (graph$\leftrightarrow$text) to reduce hallucinations and improve reliability in automatically built crisis/domain KGs.
+    \item \textbf{GraphRAG-style retrieval and grounding:} aligning VLMs/VLAs with crisis knowledge graphs (entities, events, locations, resources), enabling explainable and auditable answers.
+    \item \textbf{Temporal/event graphs from heterogeneous streams:} fusing social media, satellite/aerial imagery, and sensor/time-series into dynamic graphs for situational awareness.
+    \item \textbf{Robustness, uncertainty, and XAI:} perturbation-based explanation for graph features; calibrated uncertainty for triage and prioritization.
+\end{itemize}
+
+\textbf{Example directions at QCRI:}
+\begin{itemize}[leftmargin=*]
+    \item KG-augmented VLM grounding for geolocated crisis imagery and reports
+    \item Event graph construction from social media streams with dual validation
+    \item Multimodal GraphRAG for decision support (needs/resources matching, route planning)
+    \item Benchmarks: reliability, faithfulness, and human factors for crisis AI
+\end{itemize}
+
+\textbf{Recent work:} ASD-GraphNet (fMRI graph learning for autism diagnosis, Computers in Biology and Medicine, 2025; \href{https://doi.org/10.1016/j.compbiomed.2025.110723}{doi:10.1016/j.compbiomed.2025.110723}). Under review: HIDE-KG --- dual-learning KGC with LLMs for reliable graph construction.
+
+\end{document}
+
+
